@@ -5,6 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, Star, Heart, Trophy, RotateCcw, Play, Pause } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useGameProgress } from "@/hooks/useGameProgress";
 import rabbitGameImage from "@/assets/rabbit-game.jpg";
 
 interface Balloon {
@@ -29,6 +30,7 @@ interface GameState {
 
 export default function CazaNumeros() {
   const navigate = useNavigate();
+  const { saveGameProgress } = useGameProgress();
   const [gameState, setGameState] = useState<GameState>({
     score: 0,
     lives: 3,
@@ -395,6 +397,9 @@ export default function CazaNumeros() {
             <h2 className="text-3xl font-bold mb-4">💙 ¡Sigue Intentándolo!</h2>
             <p className="text-lg text-muted-foreground mb-6">
               No te preocupes, ¡todos los matemáticos necesitan práctica!
+            </p>
+            <p className="text-sm text-muted-foreground mb-6">
+              Puntuación final: {gameState.score}
             </p>
             <div className="flex items-center justify-center gap-4">
               <Button

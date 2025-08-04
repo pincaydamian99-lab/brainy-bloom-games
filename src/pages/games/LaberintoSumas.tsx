@@ -175,7 +175,7 @@ export default function LaberintoSumas() {
       setScore(score + 20);
       setProblemsCompleted(problemsCompleted + 1);
       setCollectedTreasures(collectedTreasures + 1);
-      toast.success(`¡Correcto! ${currentProblem.question.replace('?', answer)}`);
+      toast.success(`¡Correcto! ${currentProblem.question.replace('?', answer.toString())}`);
       
       // Marcar problema como respondido
       const newMaze = [...maze];
