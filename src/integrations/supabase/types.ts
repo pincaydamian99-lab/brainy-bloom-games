@@ -14,7 +14,118 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      game_progress: {
+        Row: {
+          best_score: number | null
+          completed_at: string | null
+          created_at: string
+          game_name: string
+          id: string
+          max_stars: number | null
+          stars_earned: number | null
+          student_id: string
+          total_attempts: number | null
+          updated_at: string
+        }
+        Insert: {
+          best_score?: number | null
+          completed_at?: string | null
+          created_at?: string
+          game_name: string
+          id?: string
+          max_stars?: number | null
+          stars_earned?: number | null
+          student_id: string
+          total_attempts?: number | null
+          updated_at?: string
+        }
+        Update: {
+          best_score?: number | null
+          completed_at?: string | null
+          created_at?: string
+          game_name?: string
+          id?: string
+          max_stars?: number | null
+          stars_earned?: number | null
+          student_id?: string
+          total_attempts?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "game_progress_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          role: string | null
+          school_name: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          role?: string | null
+          school_name?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          role?: string | null
+          school_name?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      students: {
+        Row: {
+          age: number | null
+          created_at: string
+          grade: string | null
+          id: string
+          name: string
+          teacher_id: string
+        }
+        Insert: {
+          age?: number | null
+          created_at?: string
+          grade?: string | null
+          id?: string
+          name: string
+          teacher_id: string
+        }
+        Update: {
+          age?: number | null
+          created_at?: string
+          grade?: string | null
+          id?: string
+          name?: string
+          teacher_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "students_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
