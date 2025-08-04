@@ -2,41 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Matemáticas Divertidas - Sistema de diseño colorido para niños */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Colores primarios vibrantes para niños */
+    --background: 200 100% 95%; /* Azul cielo muy claro */
+    --foreground: 240 30% 20%; /* Azul marino suave */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 30% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 30% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Azul cielo como color primario */
+    --primary: 200 100% 60%; /* Azul cielo */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Amarillo brillante como secundario */
+    --secondary: 45 100% 70%; /* Amarillo brillante */
+    --secondary-foreground: 240 30% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Verde pasto */
+    --success: 120 60% 50%; /* Verde pasto */
+    --success-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Rosa pastel */
+    --pink: 330 60% 75%; /* Rosa pastel */
+    --pink-foreground: 240 30% 20%;
+
+    /* Morado pastel */
+    --purple: 280 50% 70%; /* Morado pastel */
+    --purple-foreground: 0 0% 100%;
+
+    --muted: 200 50% 90%;
+    --muted-foreground: 240 20% 50%;
+
+    --accent: 45 100% 70%; /* Amarillo brillante */
+    --accent-foreground: 240 30% 20%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 200 30% 85%;
+    --input: 0 0% 100%;
+    --ring: 200 100% 60%;
 
-    --radius: 0.5rem;
+    --radius: 1rem; /* Bordes más redondeados para niños */
+
+    /* Gradientes mágicos */
+    --gradient-sky: linear-gradient(135deg, hsl(200 100% 80%), hsl(220 80% 90%));
+    --gradient-sunset: linear-gradient(135deg, hsl(45 100% 70%), hsl(330 60% 75%));
+    --gradient-forest: linear-gradient(135deg, hsl(120 60% 60%), hsl(200 100% 70%));
+    --gradient-rainbow: linear-gradient(90deg, hsl(0 100% 70%), hsl(45 100% 70%), hsl(120 60% 60%), hsl(200 100% 60%), hsl(280 50% 70%));
+
+    /* Sombras suaves */
+    --shadow-soft: 0 4px 20px hsl(200 100% 60% / 0.15);
+    --shadow-glow: 0 0 30px hsl(45 100% 70% / 0.3);
+    --shadow-magical: 0 8px 32px hsl(280 50% 70% / 0.2);
+
+    /* Transiciones suaves */
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +128,69 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-fredoka;
+    background: var(--gradient-sky);
+    min-height: 100vh;
   }
+
+  /* Animaciones mágicas para niños */
+  .bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .wiggle {
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  .rainbow-text {
+    background: var(--gradient-rainbow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .magical-border {
+    border: 3px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                var(--gradient-rainbow) border-box;
+    border-radius: var(--radius);
+  }
+
+  .game-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-bounce);
+  }
+
+  .game-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-magical);
+  }
+
+  .star-sparkle {
+    filter: drop-shadow(0 0 10px hsl(45 100% 70%));
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
 }
